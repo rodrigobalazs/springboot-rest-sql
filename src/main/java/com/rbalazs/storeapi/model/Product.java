@@ -3,6 +3,7 @@ package com.rbalazs.storeapi.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.Validate;
 
 import java.util.Objects;
 
@@ -18,6 +19,23 @@ public class Product extends Base {
 
     private String name;
     private Double price;
+
+    /** Empty Constructor required by JPA / Hibernate. */
+    public Product() {}
+
+    /**
+     * Creates a new Product.
+     *
+     * @param theName the product name, cannot be null nor empty.
+     * @param theCategory the category associated to the product, cannot be null.
+     */
+    public Product(final String theName, final Double thePrice, final Category theCategory) {
+        Validate.notEmpty(theName, "The product name cannot be null nor empty");
+        Validate.notNull(theCategory, "The category cannot be null");
+        name = theName;
+        price = thePrice;
+        category = theCategory;
+    }
 
     @ManyToOne
     @JoinColumn(name = "category_id")

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
  * @author Rodrigo Balazs
  */
 @RestController
+@RequestMapping("/category")
 public class CategoryController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CategoryController.class);
@@ -34,11 +36,11 @@ public class CategoryController {
      *
      * @return a list of {@link CategoryDTO}
      *
-     * e.g Request => curl http://localhost:8080/getCategories
+     * e.g Request => curl http://localhost:8080/category/getCategories
      */
     @GetMapping("/getCategories")
     public ResponseEntity<List<CategoryDTO>> getCategories() {
-        LOGGER.info("starts to execute CategoryController.getCategories()");
+        LOGGER.info("starts to execute categoryController.getCategories()");
         List<CategoryDTO> response = categoryService.getCategories();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -49,11 +51,11 @@ public class CategoryController {
      * @param id the category ID to retrieve
      * @return a {@link CategoryDTO}
      *
-     * e.g Request => curl http://localhost:8080/1
+     * e.g Request => curl http://localhost:8080/category/1
      */
     @GetMapping("/{id}")
     public ResponseEntity<CategoryDTO> getCategoriesById(@PathVariable Long id) {
-        LOGGER.info("starts to execute CategoryController.getCategoriesById() with ID:{}" , id);
+        LOGGER.info("starts to execute categoryController.getCategoriesById() with ID:{}" , id);
         CategoryDTO response = categoryService.getCategoryById(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

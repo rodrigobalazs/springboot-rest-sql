@@ -1,6 +1,7 @@
 package com.rbalazs.storeapi.service;
 
 import com.rbalazs.storeapi.dto.CategoryDTO;
+import com.rbalazs.storeapi.exception.EntityNotFoundException;
 import com.rbalazs.storeapi.model.Category;
 import com.rbalazs.storeapi.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,9 @@ public class CategoryService {
      */
     public CategoryDTO getCategoryById(Long id) {
         Optional<Category> result = categoryRepository.findById(id);
+        if (result.isEmpty()) {
+            throw new EntityNotFoundException(id);
+        }
         return conversionService.convert(result.get(), CategoryDTO.class);
     }
 }
