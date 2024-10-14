@@ -10,9 +10,9 @@ import lombok.Setter;
  *
  * @author Rodrigo Balazs
  */
+@MappedSuperclass
 @Getter
 @Setter
-@MappedSuperclass
 public class Base {
 
     @Id
