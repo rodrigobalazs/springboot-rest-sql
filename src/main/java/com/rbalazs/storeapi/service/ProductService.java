@@ -42,14 +42,14 @@ public class ProductService {
     /**
      * Retrieves a Product by the ID given as parameter.
      *
-     * @param id the product ID to retrieve
+     * @param id the product identifier to retrieve
      * @return a {@link ProductDTO}
      */
     public ProductDTO getProductById(Long id) {
-        Optional<Product> result = productRepository.findById(id);
-        if (result.isEmpty()) {
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        if (optionalProduct.isEmpty()) {
             throw new EntityNotFoundException(id);
         }
-        return conversionService.convert(result.get(), ProductDTO.class);
+        return conversionService.convert(optionalProduct.get(), ProductDTO.class);
     }
 }

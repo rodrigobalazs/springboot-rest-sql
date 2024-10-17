@@ -7,10 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,14 +38,14 @@ public class CategoryController {
     @GetMapping("/getCategories")
     public ResponseEntity<List<CategoryDTO>> getCategories() {
         LOGGER.info("starts to execute categoryController.getCategories()");
-        List<CategoryDTO> response = categoryService.getCategories();
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        List<CategoryDTO> categoriesDTO = categoryService.getCategories();
+        return new ResponseEntity<>(categoriesDTO, HttpStatus.OK);
     }
 
     /**
      * Retrieves a Category by the ID given as parameter.
      *
-     * @param id the category ID to retrieve
+     * @param id the category identifier to retrieve
      * @return a {@link CategoryDTO}
      *
      * e.g Request => curl http://localhost:8080/category/1
@@ -56,8 +53,33 @@ public class CategoryController {
     @GetMapping("/{id}")
     public ResponseEntity<CategoryDTO> getCategoriesById(@PathVariable Long id) {
         LOGGER.info("starts to execute categoryController.getCategoriesById() with ID:{}" , id);
-        CategoryDTO response = categoryService.getCategoryById(id);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        CategoryDTO categoryDTO = categoryService.getCategoryById(id);
+        return new ResponseEntity<>(categoryDTO, HttpStatus.OK);
+    }
+
+    /**
+     * Save a new Category into the repository.
+     *
+     * @param categoryDTO the categoryDTO to save
+     * @return a {@link CategoryDTO} with the persisted category
+     */
+    @PostMapping
+    public ResponseEntity<CategoryDTO> save(@RequestBody CategoryDTO categoryDTO) {
+        LOGGER.info("starts to execute categoryController.save() with ID:{}" , categoryDTO.getId());
+        CategoryDTO persistedCategoryDTO = categoryService.save(categoryDTO);
+        return new ResponseEntity<>(persistedCategoryDTO, HttpStatus.CREATED);
+    }
+
+    /**
+     * Deletes a Category by the ID given as parameter.
+     *
+     * @param id the category identifier to delete
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        LOGGER.info("starts to execute categoryController.delete() with ID:{}" , id);
+        categoryService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
 

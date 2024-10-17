@@ -38,14 +38,14 @@ public class ProductController {
     @GetMapping("/getProducts")
     public ResponseEntity<List<ProductDTO>> getProducts() {
         LOGGER.info("starts to execute productController.getProducts()");
-        List<ProductDTO> response = productService.getProducts();
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        List<ProductDTO> productsDTO = productService.getProducts();
+        return new ResponseEntity<>(productsDTO, HttpStatus.OK);
     }
 
     /**
      * Retrieves a Product by the ID given as parameter.
      *
-     * @param id the Product ID to retrieve
+     * @param id the product identifier to retrieve
      * @return a {@link ProductDTO}
      *
      * e.g Request => curl http://localhost:8080/product/1
@@ -53,8 +53,8 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> getProductsById(@PathVariable Long id) {
         LOGGER.info("starts to execute productController.getProductsById() with ID:{}" , id);
-        ProductDTO response = productService.getProductById(id);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        ProductDTO productDTO = productService.getProductById(id);
+        return new ResponseEntity<>(productDTO, HttpStatus.OK);
     }
 }
 
