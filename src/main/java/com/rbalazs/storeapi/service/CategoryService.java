@@ -41,7 +41,7 @@ public class CategoryService {
     }
 
     /**
-     * Retrieves a Category by the ID given as parameter.
+     * Retrieves a Category by the Category ID given as parameter.
      *
      * @param id the category identifier to retrieve
      * @return a {@link CategoryDTO}
@@ -50,6 +50,20 @@ public class CategoryService {
         Optional<Category> optionalCategory = categoryRepository.findById(id);
         if (optionalCategory.isEmpty()) {
             throw new EntityNotFoundException(id);
+        }
+        return conversionService.convert(optionalCategory.get(), CategoryDTO.class);
+    }
+
+    /**
+     * Retrieves a Category by the Category Name given as parameter.
+     *
+     * @param name the category name to retrieve
+     * @return a {@link CategoryDTO}
+     */
+    public CategoryDTO getCategoryByName(String name) {
+        Optional<Category> optionalCategory = Optional.ofNullable(categoryRepository.findByName(name));
+        if (optionalCategory.isEmpty()) {
+            throw new EntityNotFoundException();
         }
         return conversionService.convert(optionalCategory.get(), CategoryDTO.class);
     }

@@ -40,7 +40,7 @@ public class ProductService {
     }
 
     /**
-     * Retrieves a Product by the ID given as parameter.
+     * Retrieves a Product by the Product ID given as parameter.
      *
      * @param id the product identifier to retrieve
      * @return a {@link ProductDTO}
@@ -49,6 +49,20 @@ public class ProductService {
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (optionalProduct.isEmpty()) {
             throw new EntityNotFoundException(id);
+        }
+        return conversionService.convert(optionalProduct.get(), ProductDTO.class);
+    }
+
+    /**
+     * Retrieves a Product by the Product Name given as parameter.
+     *
+     * @param name the product name to retrieve
+     * @return a {@link ProductDTO}
+     */
+    public ProductDTO getProductByName(String name) {
+        Optional<Product> optionalProduct = Optional.ofNullable(productRepository.findByName(name));
+        if (optionalProduct.isEmpty()) {
+            throw new EntityNotFoundException();
         }
         return conversionService.convert(optionalProduct.get(), ProductDTO.class);
     }

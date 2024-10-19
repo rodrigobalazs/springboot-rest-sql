@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.Operation;
 
 import java.util.List;
 
 /**
  * Category REST Controller
+ * API Documentation / Swagger at => https://<project_url>/swagger-ui/index.html
  *
  * @author Rodrigo Balazs
  */
@@ -28,54 +30,44 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    /**
-     * Retrieves a list with all the Categories
-     *
-     * @return a list of {@link CategoryDTO}
-     *
-     * e.g Request => curl http://localhost:8080/category/getCategories
-     */
     @GetMapping("/getCategories")
+    @Operation(summary = "Retrieves all Categories",
+            description = "Retrieves a list with all the availables Categories")
     public ResponseEntity<List<CategoryDTO>> getCategories() {
         LOGGER.info("starts to execute categoryController.getCategories()");
         List<CategoryDTO> categoriesDTO = categoryService.getCategories();
         return new ResponseEntity<>(categoriesDTO, HttpStatus.OK);
     }
 
-    /**
-     * Retrieves a Category by the ID given as parameter.
-     *
-     * @param id the category identifier to retrieve
-     * @return a {@link CategoryDTO}
-     *
-     * e.g Request => curl http://localhost:8080/category/1
-     */
     @GetMapping("/{id}")
-    public ResponseEntity<CategoryDTO> getCategoriesById(@PathVariable Long id) {
-        LOGGER.info("starts to execute categoryController.getCategoriesById() with ID:{}" , id);
+    @Operation(summary = "Retrieves a Category by ID",
+            description = "Retrieves a Category by the Category ID given as parameter")
+    public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable Long id) {
+        LOGGER.info("starts to execute categoryController.getCategoryById() with ID:{}" , id);
         CategoryDTO categoryDTO = categoryService.getCategoryById(id);
         return new ResponseEntity<>(categoryDTO, HttpStatus.OK);
     }
 
-    /**
-     * Save a new Category into the repository.
-     *
-     * @param categoryDTO the categoryDTO to save
-     * @return a {@link CategoryDTO} with the persisted category
-     */
+    @GetMapping("/{name}")
+    @Operation(summary = "Retrieves a Category by Name",
+            description = "Retrieves a Category by the Category Name given as parameter")
+    public ResponseEntity<CategoryDTO> getCategoryByName(@PathVariable String name) {
+        LOGGER.info("starts to execute categoryController.getCategoryByName() with name:{}" , name);
+        CategoryDTO categoryDTO = categoryService.getCategoryByName(name);
+        return new ResponseEntity<>(categoryDTO, HttpStatus.OK);
+    }
+
     @PostMapping
+    @Operation(summary = "Saves a new Category", description = "Saves a new Category")
     public ResponseEntity<CategoryDTO> save(@RequestBody CategoryDTO categoryDTO) {
         LOGGER.info("starts to execute categoryController.save() with ID:{}" , categoryDTO.getId());
         CategoryDTO persistedCategoryDTO = categoryService.save(categoryDTO);
         return new ResponseEntity<>(persistedCategoryDTO, HttpStatus.CREATED);
     }
 
-    /**
-     * Deletes a Category by the ID given as parameter.
-     *
-     * @param id the category identifier to delete
-     */
     @DeleteMapping("/{id}")
+    @Operation(summary = "Deletes a Category by ID",
+            description = "Deletes a Category by the Category ID given as parameter")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         LOGGER.info("starts to execute categoryController.delete() with ID:{}" , id);
         categoryService.delete(id);

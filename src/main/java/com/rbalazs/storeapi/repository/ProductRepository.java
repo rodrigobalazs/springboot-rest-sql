@@ -4,6 +4,8 @@ import com.rbalazs.storeapi.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * CRUD Product Repository
+ * Product Repository
  */
-public interface ProductRepository extends JpaRepository<Product, Long> {}
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    Product findByName(String name);
+}
