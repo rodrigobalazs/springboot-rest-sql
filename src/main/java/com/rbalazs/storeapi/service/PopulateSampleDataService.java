@@ -3,8 +3,6 @@ package com.rbalazs.storeapi.service;
 import com.rbalazs.storeapi.model.Category;
 import com.rbalazs.storeapi.model.Product;
 import com.rbalazs.storeapi.repository.CategoryRepository;
-import java.util.Arrays;
-
 import com.rbalazs.storeapi.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

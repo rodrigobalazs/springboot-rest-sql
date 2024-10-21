@@ -6,7 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.mapstruct.Mapper;
 
 /**
- * Converts a given {@link Category} Model into a {@link CategoryDTO} via Spring Converter
+ * Converts a given {@link Category} Model into a {@link CategoryDTO} via Spring Converter.
  */
 @Mapper(componentModel = "spring")
 public interface CategoryMapper extends Converter<Category, CategoryDTO> {

@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * Category Service
+ * Category Service.
  *
  * @author Rodrigo Balazs
  */
@@ -22,7 +22,7 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    /** Spring Conversion Service, used to convert between DTO / Model. */
+    /** Spring DTO/Model Conversion Service. */
     private final ConversionService conversionService;
 
     @Autowired
@@ -90,5 +90,23 @@ public class CategoryService {
             throw new EntityNotFoundException(id);
         }
         categoryRepository.deleteById(id);
+    }
+
+    /**
+     * Updates the Category associated to the Category ID given as parameter.
+     *
+     * @param id the category identifier
+     * @param categoryDTO the categoryDTO with the category attributes to update
+     * @return a {@link CategoryDTO} with the updated Category
+     */
+    public CategoryDTO update(Long id, CategoryDTO categoryDTO) {
+        Optional<Category> optionalCategory = categoryRepository.findById(id);
+        if (optionalCategory.isEmpty()) {
+            throw new EntityNotFoundException(id);
+        }
+
+        Category categoryToUpdate = conversionService.convert(categoryDTO, Category.class);
+        Category updatedCategory = categoryRepository.save(Objects.requireNonNull(categoryToUpdate));
+        return conversionService.convert(updatedCategory, CategoryDTO.class);
     }
 }

@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Base entity with common properties
+ * Base entity with common properties.
  *
  * @author Rodrigo Balazs
  */

@@ -12,7 +12,8 @@ import org.mockito.MockitoAnnotations;
 public class BaseServiceTest {
 
     /**
-     * openMocks() it´s required to be executed to inject properly each @Mock annotation.
+     * MockitoAnnotations.openMocks it´s required to be executed before each test to inject properly
+     * each @Mock annotation.
      */
     @BeforeEach
     void initializeMocks(){

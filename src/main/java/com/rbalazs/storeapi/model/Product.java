@@ -27,6 +27,7 @@ public class Product extends Base {
      * Creates a new Product.
      *
      * @param theName the product name, cannot be null nor empty.
+     * @param thePrice the product price
      * @param theCategory the category associated to the product, cannot be null.
      */
     public Product(final String theName, final Double thePrice, final Category theCategory) {

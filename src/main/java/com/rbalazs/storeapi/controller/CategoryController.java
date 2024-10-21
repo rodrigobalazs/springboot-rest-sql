@@ -13,8 +13,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import java.util.List;
 
 /**
- * Category REST Controller
- * API Documentation / Swagger at => https://<project_url>/swagger-ui/index.html
+ * Category REST Controller | API Documentation/Swagger at => https://<project_url>/swagger-ui/index.html
  *
  * @author Rodrigo Balazs
  */
@@ -31,8 +30,9 @@ public class CategoryController {
     }
 
     @GetMapping("/getCategories")
-    @Operation(summary = "Retrieves all Categories",
-            description = "Retrieves a list with all the availables Categories")
+    @Operation(summary = "Retrieves Categories",
+            description = "Retrieves a list with all the available Categories" +
+                          "e.g Request => curl http://localhost:8080/category/getCategories")
     public ResponseEntity<List<CategoryDTO>> getCategories() {
         LOGGER.info("starts to execute categoryController.getCategories()");
         List<CategoryDTO> categoriesDTO = categoryService.getCategories();
@@ -41,7 +41,8 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Retrieves a Category by ID",
-            description = "Retrieves a Category by the Category ID given as parameter")
+            description = "Retrieves a Category by the Category ID given as parameter" +
+                          "e.g Request => curl http://localhost:8080/category/1")
     public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable Long id) {
         LOGGER.info("starts to execute categoryController.getCategoryById() with ID:{}" , id);
         CategoryDTO categoryDTO = categoryService.getCategoryById(id);
@@ -72,6 +73,15 @@ public class CategoryController {
         LOGGER.info("starts to execute categoryController.delete() with ID:{}" , id);
         categoryService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Updates a Category by ID",
+            description = "Updates the Category associated to the Category ID given as parameter")
+    public ResponseEntity<CategoryDTO> update(@PathVariable Long id, @RequestBody CategoryDTO categoryDTO) {
+        LOGGER.info("starts to execute categoryController.update() with ID:{}" , id);
+        CategoryDTO updatedCategoryDTO = categoryService.update(id, categoryDTO);
+        return new ResponseEntity<>(updatedCategoryDTO, HttpStatus.OK);
     }
 }
 
