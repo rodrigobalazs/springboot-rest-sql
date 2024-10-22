@@ -1,6 +1,5 @@
 package com.rbalazs.storeapi.service;
 
-import com.rbalazs.storeapi.dto.CategoryDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.MockitoAnnotations;
 
@@ -18,11 +17,5 @@ public class BaseServiceTest {
     @BeforeEach
     void initializeMocks(){
         MockitoAnnotations.openMocks(this);
-    }
-
-    CategoryDTO populateCategoryDTO(String name){
-        CategoryDTO categoryDTO = new CategoryDTO();
-        categoryDTO.setName(name);
-        return categoryDTO;
     }
 }

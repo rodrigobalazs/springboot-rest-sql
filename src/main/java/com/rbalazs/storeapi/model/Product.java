@@ -1,5 +1,6 @@
 package com.rbalazs.storeapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -40,6 +41,10 @@ public class Product extends Base {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
+    /* workaround to avoid "org.springframework.http.converter.HttpMessageNotWritableException: Could not write
+    JSON: Document nesting depth (1001) exceeds the maximum allowed" during REST API calls due circular dependency
+    between Category and Product */
+    @JsonIgnore
     private Category category;
 
     @Override
