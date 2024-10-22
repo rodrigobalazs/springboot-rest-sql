@@ -120,6 +120,7 @@
 
 	</dependencies>
 
+	<!-- plugins -->
 	<build>
 		<plugins>
 			<plugin>
