@@ -1,9 +1,10 @@
 package com.rbalazs.storeapi.model;
 
 import jakarta.persistence.*;
-import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Objects;
 
 /**
  * Base entity with common properties.

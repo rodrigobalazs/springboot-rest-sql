@@ -50,21 +50,28 @@ public class CategoryService {
      * @return a {@link Category}
      */
     public Category getCategoryByName(String name) {
-        return categoryRepository.findByName(name);
+        return categoryRepository.findByName(name).orElse(null);
     }
 
     /**
      * Save a new Category into the repository.
      *
-     *
      * @param category the categoryDTO to save
      * @return a {@link Category} with the persisted category
      */
     public Category save(Category category) {
-        if (category.getName() == null || category.getName().isEmpty()){
+        String categoryName = category.getName();
+        if (categoryName == null || categoryName.isEmpty()){
             throw new CustomException(ErrorCode.EMPTY_FIELDS);
         }
-        return categoryRepository.save(category);
+
+        if (getCategoryByName(categoryName) != null){
+            throw new CustomException(ErrorCode.ENTITY_NON_UNIQUE);
+        }
+
+        category.addProducts(category.getProducts());
+        categoryRepository.save(category);
+        return category;
     }
 
     /**
@@ -90,6 +97,8 @@ public class CategoryService {
         if (!categoryRepository.existsById(id)) {
             throw new CustomException(ErrorCode.ENTITY_NOT_FOUND);
         }
+        category.setId(id);
+        category.addProducts(category.getProducts());
         return categoryRepository.save(category);
     }
 }

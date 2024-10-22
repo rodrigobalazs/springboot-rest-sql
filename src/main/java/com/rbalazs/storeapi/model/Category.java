@@ -1,11 +1,11 @@
 package com.rbalazs.storeapi.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.List;
 import java.util.Objects;
+
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.Validate;
 
 /**
@@ -20,7 +20,7 @@ public class Category extends Base {
 
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Product> products;
 
     /** Empty Constructor required by JPA / Hibernate. */
@@ -34,6 +34,13 @@ public class Category extends Base {
     public Category(final String theName) {
         Validate.notEmpty(theName, "The category name cannot be null nor empty");
         name = theName;
+    }
+
+    /* Required method to synchronize both sides of the bidirectional association between Category and Product
+    ref: https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate */
+    public void addProducts(List<Product> products) {
+        this.products = products;
+        products.forEach(product -> product.setCategory(this));
     }
 
     @Override

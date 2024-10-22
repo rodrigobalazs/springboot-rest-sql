@@ -21,6 +21,14 @@ public class Product extends Base {
     private String name;
     private Double price;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    /* This is required to avoid during GET API Calls this exception =>
+    "org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Document nesting depth
+    exceeds the maximum allowed" which is caused by a circular dependency between Category and Product */
+    @JsonIgnore
+    private Category category;
+
     /** Empty Constructor required by JPA / Hibernate. */
     public Product() {}
 
@@ -29,23 +37,12 @@ public class Product extends Base {
      *
      * @param theName the product name, cannot be null nor empty.
      * @param thePrice the product price
-     * @param theCategory the category associated to the product, cannot be null.
      */
-    public Product(final String theName, final Double thePrice, final Category theCategory) {
+    public Product(final String theName, final Double thePrice) {
         Validate.notEmpty(theName, "The product name cannot be null nor empty");
-        Validate.notNull(theCategory, "The category cannot be null");
         name = theName;
         price = thePrice;
-        category = theCategory;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    /* workaround to avoid "org.springframework.http.converter.HttpMessageNotWritableException: Could not write
-    JSON: Document nesting depth (1001) exceeds the maximum allowed" during REST API calls due circular dependency
-    between Category and Product */
-    @JsonIgnore
-    private Category category;
 
     @Override
     public boolean equals(Object o) {
