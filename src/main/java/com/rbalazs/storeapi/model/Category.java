@@ -36,7 +36,7 @@ public class Category extends Base {
         name = theName;
     }
 
-    /* Required method to synchronize both sides of the bidirectional association between Category and Product
+    /* this method is needed to synchronize both sides of the bidirectional association between Category and Product
     ref: https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate */
     public void addProducts(List<Product> products) {
         this.products = products;

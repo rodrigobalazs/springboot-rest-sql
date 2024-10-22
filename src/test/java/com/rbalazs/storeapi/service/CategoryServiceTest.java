@@ -1,5 +1,6 @@
 package com.rbalazs.storeapi.service;
 
+import com.rbalazs.storeapi.enums.AppConstants;
 import com.rbalazs.storeapi.model.Category;
 import com.rbalazs.storeapi.repository.CategoryRepository;
 import org.junit.jupiter.api.Test;
@@ -25,18 +26,18 @@ class CategoryServiceTest extends BaseServiceTest {
 
         // Given
         CategoryService categoryService = new CategoryService(categoryRepository);
-        Category category = new Category("category1");
-        when(categoryRepository.findByName("category1")).thenReturn(Optional.of(category));
+        Category category = new Category(AppConstants.CATEGORY_CLOTHING);
+        when(categoryRepository.findByName(AppConstants.CATEGORY_CLOTHING)).thenReturn(Optional.of(category));
 
         // When
-        Category retrievedCategory = categoryService.getCategoryByName("category1");
+        Category retrievedCategory = categoryService.getCategoryByName(AppConstants.CATEGORY_CLOTHING);
 
         // Then
-        verify(categoryRepository, atMostOnce()).findByName("category1");
+        verify(categoryRepository, atMostOnce()).findByName(AppConstants.CATEGORY_CLOTHING);
 
         assertAll(
                 () -> assertNotNull(retrievedCategory),
-                () -> assertEquals("category1", retrievedCategory.getName())
+                () -> assertEquals(AppConstants.CATEGORY_CLOTHING, retrievedCategory.getName())
 		);
 
     }

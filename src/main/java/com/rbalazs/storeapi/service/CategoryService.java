@@ -1,7 +1,7 @@
 package com.rbalazs.storeapi.service;
 
+import com.rbalazs.storeapi.enums.AppValidations;
 import com.rbalazs.storeapi.exception.CustomException;
-import com.rbalazs.storeapi.exception.ErrorCode;
 import com.rbalazs.storeapi.model.Category;
 import com.rbalazs.storeapi.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,11 +62,11 @@ public class CategoryService {
     public Category save(Category category) {
         String categoryName = category.getName();
         if (categoryName == null || categoryName.isEmpty()){
-            throw new CustomException(ErrorCode.EMPTY_FIELDS);
+            throw new CustomException(AppValidations.EMPTY_FIELDS);
         }
 
         if (getCategoryByName(categoryName) != null){
-            throw new CustomException(ErrorCode.ENTITY_NON_UNIQUE);
+            throw new CustomException(AppValidations.ENTITY_NON_UNIQUE);
         }
 
         category.addProducts(category.getProducts());
@@ -81,7 +81,7 @@ public class CategoryService {
      */
     public void delete(Long id) {
         if (!categoryRepository.existsById(id)) {
-            throw new CustomException(ErrorCode.ENTITY_NOT_FOUND);
+            throw new CustomException(AppValidations.ENTITY_NOT_FOUND);
         }
         categoryRepository.deleteById(id);
     }
@@ -95,7 +95,7 @@ public class CategoryService {
      */
     public Category update(Long id, Category category) {
         if (!categoryRepository.existsById(id)) {
-            throw new CustomException(ErrorCode.ENTITY_NOT_FOUND);
+            throw new CustomException(AppValidations.ENTITY_NOT_FOUND);
         }
         category.setId(id);
         category.addProducts(category.getProducts());

@@ -1,6 +1,7 @@
 package com.rbalazs.storeapi.controller.swagger;
 
 import com.rbalazs.storeapi.controller.CategoryController;
+import com.rbalazs.storeapi.enums.AppConstants;
 import com.rbalazs.storeapi.model.Category;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -39,17 +40,17 @@ public interface CategoryControllerSwagger {
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                     schema = @Schema(implementation = Category.class))})})
     public ResponseEntity<Category> getCategoryById(
-            @Parameter(description = "Category Identifier", example = "1", required = true) @PathVariable Long id);
+            @Parameter(description = "category ID", example = "1", required = true) @PathVariable Long id);
 
 
-    @Operation(summary = "Retrieves a Category by Name",
-            description = "Retrieves a Category by the Category Name given as parameter")
+    @Operation(summary = "Retrieves a Category by Name")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "returns a JSON Object with the Category information",
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                     schema = @Schema(implementation = Category.class))})})
     public ResponseEntity<Category> getCategoryByName(
-            @Parameter(description = "Category Name", example = "category1", required = true) @PathVariable String name);
+            @Parameter(description = "category name", example = AppConstants.CATEGORY_FURNITURE, required = true)
+            @PathVariable String name);
 
 
     @Operation(summary = "Saves a new Category")
@@ -62,15 +63,15 @@ public interface CategoryControllerSwagger {
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                     array = @ArraySchema(schema = @Schema(implementation = Void.class)))})})
     public ResponseEntity<Void> delete(
-            @Parameter(description = "Category Identifier to delete", example = "1", required = true) @PathVariable Long id);
+            @Parameter(description = "category ID to delete", example = "1", required = true) @PathVariable Long id);
 
 
-    @Operation(summary = "Updates a Category by ID")
+    @Operation(summary = "Updates a category by ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "returns a JSON Array with the updated Category",
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                     array = @ArraySchema(schema = @Schema(implementation = Category.class)))})})
     public ResponseEntity<Category> update(
-            @Parameter(description = "Category Identifier to update", example = "1", required = true) @PathVariable Long id,
+            @Parameter(description = "category ID to update", example = "1", required = true) @PathVariable Long id,
             @RequestBody Category category);
 }

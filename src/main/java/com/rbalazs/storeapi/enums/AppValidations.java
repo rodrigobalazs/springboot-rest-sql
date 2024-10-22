@@ -1,13 +1,13 @@
-package com.rbalazs.storeapi.exception;
+package com.rbalazs.storeapi.enums;
 
 import org.springframework.http.HttpStatus;
 
 /**
- * Enum which contains some commons exception status/messages.
+ * Enum which contains some validation messages.
  *
  * @author Rodrigo Balazs
  */
-public enum ErrorCode {
+public enum AppValidations {
     EMPTY_JSON_BODY(HttpStatus.BAD_REQUEST, "the JSON body cannot be empty"),
     EMPTY_FIELDS(HttpStatus.BAD_REQUEST, "Some mandatory fields are empty"),
     ENTITY_NON_UNIQUE(HttpStatus.BAD_REQUEST, "the entity already exist in the application"),
@@ -16,7 +16,7 @@ public enum ErrorCode {
     private final HttpStatus httpStatus;
     private final String message;
 
-    ErrorCode(HttpStatus httpStatus, String message) {
+    AppValidations(HttpStatus httpStatus, String message) {
         this.httpStatus = httpStatus;
         this.message = message;
     }

@@ -1,5 +1,6 @@
 package com.rbalazs.storeapi.service;
 
+import com.rbalazs.storeapi.enums.AppConstants;
 import com.rbalazs.storeapi.model.Category;
 import com.rbalazs.storeapi.model.Product;
 import com.rbalazs.storeapi.repository.CategoryRepository;
@@ -35,13 +36,23 @@ public class PopulateSampleDataService implements CommandLineRunner {
             return;
         }
         LOGGER.info("populates the database with some initial sample data for Categories and Products ..");
-        createCategoryWithProduct("category1", "product1", 10.50);
-        createCategoryWithProduct("category2", "product2", 4.4);
+        Category furnitureCategory = createCategory(AppConstants.CATEGORY_FURNITURE);
+        addProductToCategory(furnitureCategory, AppConstants.PRODUCT_SOFA, AppConstants.PRODUCT_SOFA_PRICE);
+        addProductToCategory(furnitureCategory, AppConstants.PRODUCT_OFFICE_CHAIR,
+                AppConstants.PRODUCT_OFFICE_CHAIR_PRICE);
+
+        Category clothingCategory = createCategory(AppConstants.CATEGORY_CLOTHING);
+        addProductToCategory(clothingCategory, AppConstants.PRODUCT_COAT, AppConstants.PRODUCT_COAT_PRICE);
+        addProductToCategory(clothingCategory, AppConstants.PRODUCT_SWEATER, AppConstants.PRODUCT_SWEATER_PRICE);
+
     }
 
-    private void createCategoryWithProduct(String categoryName, String productName, Double productPrice){
+    private Category createCategory(String categoryName){
         Category category = new Category(categoryName);
-        categoryRepository.save(category);
+        return categoryRepository.save(category);
+    }
+
+    private void addProductToCategory(Category category, String productName, Double productPrice){
         Product product = productRepository.save(new Product(productName,productPrice));
         category.addProducts(List.of(product));
         categoryRepository.save(category);
