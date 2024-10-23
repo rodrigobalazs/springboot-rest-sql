@@ -7,10 +7,10 @@ Spring Boot, Spring Data, etc.
 ### 🔧 Technology Stack
 
 ###### Java 17
-###### Spring Boot 3
-###### Spring Data
+###### Spring Boot 3 ( REST API )
+###### Spring Data ( MySQL )
 ###### Testing (  Junit 5  /  Mockito  /  TestContainers  ) 
-###### Misc Libraries (  Maven  /  Docker  /  Mysql /  SpringDoc OpenAPI  /  Apache Commons  /  Lombok  )
+###### Misc Libraries (  Maven  /  Docker  /  SpringDoc OpenAPI  /  Apache Commons  /  Lombok  )
 
 ### ⚒️ Getting Started
 
@@ -34,7 +34,7 @@ mvn clean install;
 mvn spring-boot:run;
 ```
 
-### API Examples
+### 💡 API Examples
 
 #### 1. Get all the available Categories =>
 ```
@@ -47,12 +47,12 @@ curl -X 'GET' 'http://localhost:8080/category/name/Furniture' -H 'accept: applic
 ```
 
 
-#### 3. Deletes a Category by Category id ( in this example category_id = 1 ) =>
+#### 3. Deletes a Category by Category id =>
 ```
 curl -X 'DELETE' 'http://localhost:8080/category/id/1'        -H 'accept: application/json';
 ```
 
-#### 4. Creates a new Category with an associated Product =>
+#### 4. Creates a new 'Sports Equipment' Category with an associated Product =>
 ```
 curl -X 'POST' 'http://localhost:8080/category' -H 'accept: application/json'  \ 
      -H 'Content-Type: application/json' -d \
@@ -67,7 +67,7 @@ curl -X 'POST' 'http://localhost:8080/category' -H 'accept: application/json'  \
 }';
 ```
 
-#### 5. Updates the category name with category_id = 2 to 'Clothing Updated Name' =>
+#### 5. Updates the category name to 'Clothing Updated Name' =>
 ```
 curl -X 'PUT' 'http://localhost:8080/category/id/2' -H 'accept: application/json'  \
      -H 'Content-Type: application/json' -d \
@@ -77,7 +77,7 @@ curl -X 'PUT' 'http://localhost:8080/category/id/2' -H 'accept: application/json
 }';
 ```
 
-#### 6. Updates the product price of the Product 'Sweater Tangle Essential' associated to Category 'Clothing' =>
+#### 6. Updates the product 'Sweater Tangle Essential' price which is associated to 'Clothing' category =>
 ```
 curl -X 'PUT' 'http://localhost:8080/category/id/2' -H 'accept: application/json' \ 
      -H 'Content-Type: application/json' -d \
