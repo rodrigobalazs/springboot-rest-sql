@@ -3,7 +3,6 @@ package com.rbalazs.storeapi.model;
 import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.Validate;

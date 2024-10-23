@@ -8,6 +8,7 @@ package com.rbalazs.storeapi.enums;
 public enum AppConstants {;
 
     public static final String CATEGORY_FURNITURE = "Furniture";
+    public static final Long CATEGORY_FURNITURE_ID = 1L;
     public static final String CATEGORY_CLOTHING = "Clothing";
 
     public static final String PRODUCT_OFFICE_CHAIR = "Office Chair Flexi Seat";

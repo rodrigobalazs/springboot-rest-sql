@@ -4,7 +4,7 @@ import com.rbalazs.storeapi.enums.AppValidations;
 import org.springframework.http.HttpStatus;
 
 /**
- * Custom Exception for the Store app, the error messages/status codes could be taken from {@link AppValidations}
+ * Custom Exception, the error messages/status codes could be taken from {@link AppValidations}
  *
  * @author Rodrigo Balazs
  */

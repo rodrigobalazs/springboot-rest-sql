@@ -14,11 +14,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 /**
- * Documentation/Swagger interface related to {@link CategoryController}.
+ * Swagger interface related to {@link CategoryController}.
  * API Documentation/Swagger at => https://<project_url>/swagger-ui/index.html
  *
  * @author Rodrigo Balazs

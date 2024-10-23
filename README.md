@@ -67,17 +67,7 @@ curl -X 'POST' 'http://localhost:8080/category' -H 'accept: application/json'  \
 }';
 ```
 
-#### 5. Updates the category name to 'Clothing Updated Name' =>
-```
-curl -X 'PUT' 'http://localhost:8080/category/id/2' -H 'accept: application/json'  \
-     -H 'Content-Type: application/json' -d \
-'{
-    "name": "Clothing Updated Name",
-    "products": []
-}';
-```
-
-#### 6. Updates the product 'Sweater Tangle Essential' price which is associated to 'Clothing' category =>
+#### 5. Updates the product 'Sweater Tangle Essential' price to $50.4 to $90.8 =>
 ```
 curl -X 'PUT' 'http://localhost:8080/category/id/2' -H 'accept: application/json' \ 
      -H 'Content-Type: application/json' -d \

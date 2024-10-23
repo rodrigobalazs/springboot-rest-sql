@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
  * @author Rodrigo Balazs
  */
 public enum AppValidations {
-    EMPTY_JSON_BODY(HttpStatus.BAD_REQUEST, "the JSON body cannot be empty"),
     EMPTY_FIELDS(HttpStatus.BAD_REQUEST, "Some mandatory fields are empty"),
     ENTITY_NON_UNIQUE(HttpStatus.BAD_REQUEST, "the entity already exist in the application"),
     ENTITY_NOT_FOUND(HttpStatus.BAD_REQUEST, "the entity was not found in the application");

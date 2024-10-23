@@ -6,7 +6,6 @@ import com.rbalazs.storeapi.model.Category;
 import com.rbalazs.storeapi.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**

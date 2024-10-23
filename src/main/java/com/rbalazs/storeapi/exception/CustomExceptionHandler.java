@@ -6,7 +6,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 /**
- * Used to handle/intercept {@link CustomException}
+ * Used to intercept {@link CustomException}
  *
  * @author Rodrigo Balazs
  */

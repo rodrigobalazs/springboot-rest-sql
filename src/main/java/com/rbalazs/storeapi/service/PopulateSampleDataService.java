@@ -11,11 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import org.apache.commons.collections4.CollectionUtils;
-
 import java.util.List;
 
 /**
- * Populates the database with some sample data with Categories and Products in case those tables are empty.
+ * Populates the database sample data related to Categories and Products in case those tables are empty.
+ *
+ * @author Rodrigo Balazs
  */
 @Service
 public class PopulateSampleDataService implements CommandLineRunner {
