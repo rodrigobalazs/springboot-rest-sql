@@ -67,7 +67,7 @@ curl -X 'POST' 'http://localhost:8080/category' -H 'accept: application/json'  \
 }';
 ```
 
-#### 5. Updates the product 'Sweater Tangle Essential' price to $50.4 to $90.8 =>
+#### 5. Updates the product 'Sweater Tangle Essential' price from $50.4 to $90.8 =>
 ```
 curl -X 'PUT' 'http://localhost:8080/category/id/2' -H 'accept: application/json' \ 
      -H 'Content-Type: application/json' -d \
