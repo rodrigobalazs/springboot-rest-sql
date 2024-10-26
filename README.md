@@ -6,11 +6,13 @@ Spring Boot, Spring Data, etc.
 
 ### 🔧 Technology Stack
 
-###### Java 17
-###### Spring Boot 3 ( REST API )
-###### Spring Data ( MySQL )
-###### Testing (  Junit 5  /  Mockito  /  TestContainers  ) 
-###### Misc Libraries (  Maven  /  Docker  /  SpringDoc OpenAPI  /  Apache Commons  /  Lombok  )
+```
+Java 17
+Spring Boot 3 ( REST API )
+Spring Data ( MySQL )
+Testing (  Junit 5  /  Mockito  /  TestContainers  )
+Misc Libraries (  Maven  /  Docker  /  SpringDoc OpenAPI  /  Apache Commons  /  Lombok  )
+```
 
 ### ⚒️ Getting Started
 
