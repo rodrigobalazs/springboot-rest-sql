@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.mockito.MockitoAnnotations;
 
 /**
- * Base Service Test class with common behaviour
+ * Base test class for Repository layer with common methods/attributes
  *
  * @author Rodrigo Balazs
  */

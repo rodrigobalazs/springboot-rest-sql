@@ -10,7 +10,7 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MySQLContainer;
 
 /**
- * Base Repository Test class with common behaviour
+ * Base test class for Service layer with common methods/attributes
  *
  * @author Rodrigo Balazs
  */
@@ -25,7 +25,7 @@ public class BaseRepositoryTest {
     @Autowired
     PopulateSampleDataService populateSampleDataService;
 
-    // for an unknown reason Docker Mysql containers >= 6.0.0 are failing to bootstrap properly during 'mvn test'
+    // for an unknown reason Docker Mysql containers >= 6.0.0 versions are failing to bootstrap properly during 'mvn test'
     public static MySQLContainer container = new MySQLContainer<>("mysql:5.7.4")
             .withUsername("test")
             .withPassword("test")

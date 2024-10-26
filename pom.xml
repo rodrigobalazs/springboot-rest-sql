@@ -20,7 +20,6 @@
 		</developer>
 	</developers>
 
-	<!-- properties -->
 	<properties>
 		<apache-commons-collections.version>4.4</apache-commons-collections.version>
 		<apache-commons-lang.version>3.17.0</apache-commons-lang.version>
@@ -33,8 +32,9 @@
 		<testcontainers.version>1.17.3</testcontainers.version>
 	</properties>
 
-	<!-- libraries dependencies -->
 	<dependencies>
+
+		<!-- Spring Boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -46,13 +46,7 @@
 			<optional>true</optional>
 		</dependency>
 
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
-		</dependency>
-
-		<!-- Spring Data / Mysql Connector dependencies -->
+		<!-- Spring Data / Mysql Connector -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -63,14 +57,14 @@
 			<artifactId>mysql-connector-j</artifactId>
 		</dependency>
 
-		<!-- SpringDoc OpenAPI / Swagger dependencies -->
+		<!-- SpringDoc OpenAPI / Swagger -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>${springdoc-openapi.version}</version>
 		</dependency>
 
-		<!-- Apache Commons dependencies -->
+		<!-- Apache Commons -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -83,7 +77,14 @@
 			<version>${apache-commons-collections.version}</version>
 		</dependency>
 
-		<!-- Junit/Testing dependencies -->
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+
+		<!-- Junit/Testing -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -120,7 +121,6 @@
 
 	</dependencies>
 
-	<!-- plugins -->
 	<build>
 		<plugins>
 			<plugin>

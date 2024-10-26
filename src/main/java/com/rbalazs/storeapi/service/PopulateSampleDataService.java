@@ -14,7 +14,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import java.util.List;
 
 /**
- * Populates the database sample data related to Categories and Products in case those tables are empty.
+ * Populates the database with sample data related to Categories and Products in case those tables are empty.
  *
  * @author Rodrigo Balazs
  */

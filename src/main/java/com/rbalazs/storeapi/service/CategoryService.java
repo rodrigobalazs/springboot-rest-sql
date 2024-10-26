@@ -55,7 +55,7 @@ public class CategoryService {
     /**
      * Save a new Category into the repository.
      *
-     * @param category the categoryDTO to save
+     * @param category the {@link Category} to save
      * @return a {@link Category} with the persisted category
      */
     public Category save(Category category) {
@@ -89,7 +89,7 @@ public class CategoryService {
      * Updates the Category associated to the Category ID given as parameter.
      *
      * @param id the category identifier
-     * @param category the category with the category attributes to update
+     * @param category a {@link Category} which contains the category´s attributes to update
      * @return a {@link Category} with the updated Category
      */
     public Category update(Long id, Category category) {

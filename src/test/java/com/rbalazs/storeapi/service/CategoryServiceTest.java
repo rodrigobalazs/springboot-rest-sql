@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
- * Junit associated to {@link CategoryService}. The Repository is mocked via Mockito Library.
+ * CategoryService Test. The Repository is mocked via Mockito.
  *
  * @author Rodrigo Balazs
  */

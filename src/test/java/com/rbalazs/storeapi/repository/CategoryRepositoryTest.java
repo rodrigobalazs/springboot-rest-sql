@@ -9,7 +9,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Junit associated to {@link CategoryRepository}.
+ * CategoryRepository Test
  *
  * @author Rodrigo Balazs
  */
