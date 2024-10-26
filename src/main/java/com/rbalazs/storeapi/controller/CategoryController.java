@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Category REST Controller.
- * API Documentation/Swagger at => https://<project_url>/swagger-ui/index.html
+ * API Documentation/Swagger at => http://<project_url>/swagger-ui/index.html
  *
  * @author Rodrigo Balazs
  */

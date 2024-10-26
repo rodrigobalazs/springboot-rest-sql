@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * Swagger interface related to {@link CategoryController}.
- * API Documentation/Swagger at => https://<project_url>/swagger-ui/index.html
+ * API Documentation/Swagger at => http://<project_url>/swagger-ui/index.html
  *
  * @author Rodrigo Balazs
  */
