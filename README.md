@@ -40,23 +40,24 @@ mvn spring-boot:run;
 
 #### 1. Get all the available Categories =>
 ```
-curl -X 'GET' 'http://localhost:8080/category/getCategories'  -H 'accept: application/json';
+curl -X GET http://localhost:8080/category/getCategories    -H 'accept: application/json';
 ```
 
 #### 2. Retrieves a Category by Category Name =>
 ```
-curl -X 'GET' 'http://localhost:8080/category/name/Furniture' -H 'accept: application/json';
+curl -X GET http://localhost:8080/category/name/Furniture   -H 'accept: application/json';
 ```
 
 
 #### 3. Deletes a Category by Category id =>
 ```
-curl -X 'DELETE' 'http://localhost:8080/category/id/1'        -H 'accept: application/json';
+curl -X DELETE http://localhost:8080/category/id/1          -H 'accept: application/json';
 ```
 
 #### 4. Creates a new 'Sports Equipment' Category with an associated Product =>
 ```
-curl -X 'POST' 'http://localhost:8080/category' -H 'accept: application/json'  \ 
+curl -X POST http://localhost:8080/category  \
+     -H 'accept: application/json'  \
      -H 'Content-Type: application/json' -d \
 '{
     "name": "Sports Equipment",
@@ -71,7 +72,8 @@ curl -X 'POST' 'http://localhost:8080/category' -H 'accept: application/json'  \
 
 #### 5. Updates the product 'Sweater Tangle Essential' price from $50.4 to $90.8 =>
 ```
-curl -X 'PUT' 'http://localhost:8080/category/id/2' -H 'accept: application/json' \ 
+curl -X PUT http://localhost:8080/category/id/2  \
+     -H 'accept: application/json' \
      -H 'Content-Type: application/json' -d \
 '{
     "name": "Clothing",
