@@ -8,9 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * CategoryRepository Test
- */
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CategoryRepositoryTest extends BaseRepositoryTest {

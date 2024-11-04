@@ -23,41 +23,18 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    /**
-     * Retrieves a list with all the Categories
-     *
-     * @return a list of {@link Category}
-     */
     public List<Category> getCategories() {
         return categoryRepository.findAll();
     }
 
-    /**
-     * Retrieves a Category by the Category ID given as parameter.
-     *
-     * @param id the category identifier to retrieve
-     * @return a {@link Category}
-     */
     public Category getCategoryById(Long id) {
         return categoryRepository.findById(id).orElse(null);
     }
 
-    /**
-     * Retrieves a Category by the Category Name given as parameter.
-     *
-     * @param name the category name to retrieve
-     * @return a {@link Category}
-     */
     public Category getCategoryByName(String name) {
         return categoryRepository.findByName(name).orElse(null);
     }
 
-    /**
-     * Save a new Category into the repository.
-     *
-     * @param category the {@link Category} to save
-     * @return a {@link Category} with the persisted category
-     */
     public Category save(Category category) {
         String categoryName = category.getName();
         if (categoryName == null || categoryName.isEmpty()){
@@ -73,11 +50,6 @@ public class CategoryService {
         return category;
     }
 
-    /**
-     * Deletes a Category by the ID given as parameter.
-     *
-     * @param id the category identifier to delete
-     */
     public void delete(Long id) {
         if (!categoryRepository.existsById(id)) {
             throw new CustomException(AppValidations.ENTITY_NOT_FOUND);
