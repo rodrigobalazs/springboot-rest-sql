@@ -4,8 +4,6 @@ import org.springframework.http.HttpStatus;
 
 /**
  * Enum which contains some validation messages.
- *
- * @author Rodrigo Balazs
  */
 public enum AppValidations {
     EMPTY_FIELDS(HttpStatus.BAD_REQUEST, "Some mandatory fields are empty"),

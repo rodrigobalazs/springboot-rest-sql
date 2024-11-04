@@ -10,29 +10,47 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * CategoryRepository Test
- *
- * @author Rodrigo Balazs
  */
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CategoryRepositoryTest extends BaseRepositoryTest {
 
+    final String categoryFurnitureName = AppConstants.CATEGORY_FURNITURE_NAME;
+    final Long categoryFurnitureId = AppConstants.CATEGORY_FURNITURE_ID;
+    final String categorySportsName = AppConstants.CATEGORY_SPORTS_NAME;
+
     @Test
     void findByName() {
-        Optional<Category> category = categoryRepository.findByName(AppConstants.CATEGORY_FURNITURE);
+        Optional<Category> category = categoryRepository.findByName(categoryFurnitureName);
         assertAll(
                 () -> assertNotNull(category.get()),
-                () -> assertEquals(AppConstants.CATEGORY_FURNITURE, category.get().getName())
+                () -> assertEquals(categoryFurnitureName, category.get().getName())
         );
     }
 
     @Test
     void findById() {
-        Optional<Category> category = categoryRepository.findById(AppConstants.CATEGORY_FURNITURE_ID);
+        Optional<Category> category = categoryRepository.findById(categoryFurnitureId);
         assertAll(
                 () -> assertNotNull(category.get()),
-                () -> assertEquals(AppConstants.CATEGORY_FURNITURE_ID, category.get().getId()),
-                () -> assertEquals(AppConstants.CATEGORY_FURNITURE, category.get().getName())
+                () -> assertEquals(categoryFurnitureId, category.get().getId()),
+                () -> assertEquals(categoryFurnitureName, category.get().getName())
+        );
+    }
+
+    @Test
+    void save() {
+        // Given
+        Category category = new Category(categorySportsName);
+        categoryRepository.save(category);
+
+        // When
+        Optional<Category> retrievedCategory = categoryRepository.findByName(categorySportsName);
+
+        // Then
+        assertAll(
+                () -> assertNotNull(retrievedCategory.get()),
+                () -> assertEquals(categorySportsName, retrievedCategory.get().getName())
         );
     }
 }

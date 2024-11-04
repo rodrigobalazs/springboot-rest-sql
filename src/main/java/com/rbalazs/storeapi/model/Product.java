@@ -10,8 +10,6 @@ import java.util.Objects;
 
 /**
  * Represents a given Product, a Product it´s associated to an specific {@link Category}.
- *
- * @author Rodrigo Balazs
  */
 @Entity
 @Getter

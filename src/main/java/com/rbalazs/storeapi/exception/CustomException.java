@@ -5,8 +5,6 @@ import org.springframework.http.HttpStatus;
 
 /**
  * Custom Exception, the error messages/status codes could be taken from {@link AppValidations}
- *
- * @author Rodrigo Balazs
  */
 public class CustomException extends RuntimeException {
     private HttpStatus status;

@@ -8,8 +8,6 @@ import java.util.Objects;
 
 /**
  * Base entity with common fields.
- *
- * @author Rodrigo Balazs
  */
 @MappedSuperclass
 @Getter

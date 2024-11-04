@@ -19,8 +19,6 @@ import java.util.List;
 /**
  * Swagger interface related to {@link CategoryController}.
  * API Documentation/Swagger at => http://<project_url>/swagger-ui/index.html
- *
- * @author Rodrigo Balazs
  */
 @Tag(name = "Category API", description = "API endpoints related to Categories and associated Products")
 public interface CategoryControllerSwagger {
@@ -48,7 +46,7 @@ public interface CategoryControllerSwagger {
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                     schema = @Schema(implementation = Category.class))})})
     public ResponseEntity<Category> getCategoryByName(
-            @Parameter(description = "category name", example = AppConstants.CATEGORY_FURNITURE, required = true)
+            @Parameter(description = "category name", example = AppConstants.CATEGORY_FURNITURE_NAME, required = true)
             @PathVariable String name);
 
 

@@ -15,8 +15,6 @@ import java.util.List;
 
 /**
  * Populates the database with sample data related to Categories and Products in case those tables are empty.
- *
- * @author Rodrigo Balazs
  */
 @Service
 public class PopulateSampleDataService implements CommandLineRunner {
@@ -37,14 +35,14 @@ public class PopulateSampleDataService implements CommandLineRunner {
             return;
         }
         LOGGER.info("populates the database with some initial sample data for Categories and Products ..");
-        Category furnitureCategory = createCategory(AppConstants.CATEGORY_FURNITURE);
-        addProductToCategory(furnitureCategory, AppConstants.PRODUCT_SOFA, AppConstants.PRODUCT_SOFA_PRICE);
-        addProductToCategory(furnitureCategory, AppConstants.PRODUCT_OFFICE_CHAIR,
+        Category furnitureCategory = createCategory(AppConstants.CATEGORY_FURNITURE_NAME);
+        addProductToCategory(furnitureCategory, AppConstants.PRODUCT_SOFA_NAME, AppConstants.PRODUCT_SOFA_PRICE);
+        addProductToCategory(furnitureCategory, AppConstants.PRODUCT_OFFICE_CHAIR_NAME,
                 AppConstants.PRODUCT_OFFICE_CHAIR_PRICE);
 
-        Category clothingCategory = createCategory(AppConstants.CATEGORY_CLOTHING);
-        addProductToCategory(clothingCategory, AppConstants.PRODUCT_COAT, AppConstants.PRODUCT_COAT_PRICE);
-        addProductToCategory(clothingCategory, AppConstants.PRODUCT_SWEATER, AppConstants.PRODUCT_SWEATER_PRICE);
+        Category clothingCategory = createCategory(AppConstants.CATEGORY_CLOTHING_NAME);
+        addProductToCategory(clothingCategory, AppConstants.PRODUCT_COAT_NAME, AppConstants.PRODUCT_COAT_PRICE);
+        addProductToCategory(clothingCategory, AppConstants.PRODUCT_SWEATER_NAME, AppConstants.PRODUCT_SWEATER_PRICE);
 
     }
 

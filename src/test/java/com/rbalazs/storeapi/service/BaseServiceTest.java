@@ -5,8 +5,6 @@ import org.mockito.MockitoAnnotations;
 
 /**
  * Base test class for Repository layer with common methods/attributes
- *
- * @author Rodrigo Balazs
  */
 public class BaseServiceTest {
 
