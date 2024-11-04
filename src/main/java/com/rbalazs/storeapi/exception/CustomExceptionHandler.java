@@ -3,7 +3,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 /**
  * Used to intercept {@link CustomException}
@@ -11,7 +10,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
  * @author Rodrigo Balazs
  */
 @ControllerAdvice
-public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
+public class CustomExceptionHandler {
 
     /**
      * Intercepts a given {@link CustomException} in order to return to the view an HTTP RESPONSE with the exception
@@ -21,7 +20,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
      * {the entity was not found in the application}
      */
     @ExceptionHandler(CustomException.class)
-    public ResponseEntity<Object> handleCustomException(CustomException ex, WebRequest request) {
+    public ResponseEntity<Object> handleCustomException(CustomException ex) {
         return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
     }
 }
