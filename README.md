@@ -22,14 +22,14 @@ git clone https://github.com/rodrigobalazs/springboot-rest-sql.git;
 cd springboot-rest-sql;
 
 # start a mysql docker container
-docker run --name <container_name> -e MYSQL_DATABASE=store_db -e MYSQL_USER=<db_user> \
-    -e MYSQL_PASSWORD=<db_password> -e MYSQL_ROOT_PASSWORD=<root_user_password> \
+docker run --name store_db -e MYSQL_DATABASE=store_db -e MYSQL_USER=user \
+    -e MYSQL_PASSWORD=pass -e MYSQL_ROOT_PASSWORD=pass \
     -p 3306:3306 -d mysql:latest;
 
-# make sure to update application.properties with the <db_user> and <db_password> defined 
+# make sure to update application.properties with the MYSQL_USER and MYSQL_PASSWORD values defined
 # in the previous point
-spring.datasource.username=<db_user>
-spring.datasource.password=<db_password>
+spring.datasource.username=user
+spring.datasource.password=pass
 
 # compile and start the spring boot server
 mvn clean install;
