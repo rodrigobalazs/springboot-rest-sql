@@ -26,8 +26,8 @@ docker run --name store_db -e MYSQL_DATABASE=store_db -e MYSQL_USER=user \
     -e MYSQL_PASSWORD=pass -e MYSQL_ROOT_PASSWORD=pass \
     -p 3306:3306 -d mysql:latest;
 
-# make sure to update application.properties with the MYSQL_USER and MYSQL_PASSWORD values defined
-# in the previous point
+# make sure to update application.properties with the
+# MYSQL_USER and MYSQL_PASSWORD values defined in the previous point
 spring.datasource.username=user
 spring.datasource.password=pass
 
