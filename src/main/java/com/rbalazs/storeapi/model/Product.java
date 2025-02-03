@@ -19,12 +19,11 @@ public class Product extends Base {
     private String name;
     private Double price;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-
-    /* This JSON annotation avoids during GET API Calls this exception =>
+    /* @JsonIgnore This JSON annotation avoids during GET API Calls this particular exception =>
     "org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Document nesting depth
     exceeds the maximum allowed" which is caused by a circular dependency between Category and Product */
+    @ManyToOne
+    @JoinColumn(name = "category_id")
     @JsonIgnore
     private Category category;
 

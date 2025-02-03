@@ -10,7 +10,8 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MySQLContainer;
 
 /**
- * Base test class for Service layer with common methods/attributes
+ * Base Integration Test class for Repository layer with common methods/attributes.
+ * The Testing Database it´s dockerized via TestContainer.
  *
  * @author Rodrigo Balazs
  */
@@ -25,7 +26,8 @@ public class BaseRepositoryTest {
     @Autowired
     PopulateSampleDataService populateSampleDataService;
 
-    // for an unknown reason Docker Mysql containers >= 6.0.0 versions are failing to bootstrap properly during 'mvn test'
+    /* For an unknown reason the Mysql Docker container applying an image equal/greater than 6.0.0 fails
+        to bootstrap properly during 'mvn test' */
     public static MySQLContainer container = new MySQLContainer<>("mysql:5.7.4")
             .withUsername("test")
             .withPassword("test")
@@ -48,6 +50,10 @@ public class BaseRepositoryTest {
         categoryRepository.deleteAll();
     }
 
+    /**
+     * Overrides some properties at application.properties with some specific values from the dockerized
+     * Testing Database.
+     */
     @DynamicPropertySource
     static void props(DynamicPropertyRegistry registry) {
         registry.add("spring.datasource.url", container::getJdbcUrl);
