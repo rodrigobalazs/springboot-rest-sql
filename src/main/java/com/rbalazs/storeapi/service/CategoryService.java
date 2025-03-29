@@ -59,10 +59,6 @@ public class CategoryService {
 
     /**
      * Updates the Category associated to the Category ID given as parameter.
-     *
-     * @param id the category identifier
-     * @param category a {@link Category} which contains the category´s attributes to update
-     * @return a {@link Category} with the updated Category
      */
     public Category update(Long id, Category category) {
         if (!categoryRepository.existsById(id)) {

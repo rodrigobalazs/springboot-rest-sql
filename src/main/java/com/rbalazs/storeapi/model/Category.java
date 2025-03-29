@@ -27,8 +27,6 @@ public class Category extends Base {
 
     /**
      * Creates a new Category.
-     *
-     * @param theName the category name.
      */
     public Category(final String theName) {
         Validate.notEmpty(theName, "The category name cannot be null nor empty");

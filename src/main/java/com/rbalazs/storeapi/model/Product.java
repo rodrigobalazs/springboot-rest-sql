@@ -32,9 +32,6 @@ public class Product extends Base {
 
     /**
      * Creates a new Product.
-     *
-     * @param theName the product name
-     * @param thePrice the product price
      */
     public Product(final String theName, final Double thePrice) {
         Validate.notEmpty(theName, "The product name cannot be null nor empty");
