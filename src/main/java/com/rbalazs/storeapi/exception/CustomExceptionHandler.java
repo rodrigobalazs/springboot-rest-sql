@@ -13,7 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 public class CustomExceptionHandler {
 
     /**
-     * Intercepts a given {@link CustomException} in order to return to the view an HTTP RESPONSE with the exception
+     * Intercepts a given {@link CustomException} in order to return to the view an HTTP RESPONSE (JSON type) with the exception
      * message.
      */
     @ExceptionHandler(CustomException.class)

@@ -9,7 +9,11 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Category Repository Integration Test.
+ * 'Category Repository' Integration Test.
+ *
+ * Although this test only tests a single repository CategoryRepository, it's still considered an
+ * Integration Test, because it's starts the Spring Application Context {@SpringBootTest} and also
+ * establishes a real Test Database connection via Testcontainers.
  */
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
